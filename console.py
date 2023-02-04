@@ -1,18 +1,28 @@
 #!/usr/bin/python3
 
-import cmd, sys
+import cmd 
 
 class HBNBCommand(cmd.Cmd):
-    cmd.prompt = '(hbnb)'
+    prompt = '(hbnb) '
     
-    def quit(self, arg):
-        self.quit()
-        
-    """override emptyline cmmd to print new line when empty"""
+    def do_EOF(self, arg):
+        """exits the console"""
+        return True 
+
+    def help_EOF(self):
+        print ("syntax: EOF"),
+        print ("-- exits console")
+
+    def do_quit(self, arg):
+        """exits console"""
+        return True
+
+    def help_quit(self):
+        print ("syntax: quit"),
+        print ("-- terminates the application")
+
     def emptyline(self):
-        if self.lastcmd:
-            self.lastcmd = ""
-            return self.onecmd('\n')
+        return False
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
