@@ -115,8 +115,29 @@ class HBNBCommand(cmd.Cmd):
             if yes == 0:
                 print("** class doesn't exist **")
 
-
-
+        def do_update(self, line):
+            """ Update if given exact object, exact attribute """
+            args = line.split()
+            no_change = ["id", "created_at", "updated_at"]
+            obj_dict = storage.all()  # all() method from file_storage.py
+            if not line:
+                print("** class name missing **")
+            elif args[0] not in HBNBCommand.__classes:
+                print("** class doesn't exist **")
+            elif len(args) == 1:
+                print("** instance id missing **")
+            else:
+                class_id = "{}.{}".format(args[0], args[1])
+                if class_id not in storage.all():
+                    print("** no instance found **")
+                elif len(args) < 3:
+                    print("** attribute name missing **")
+                elif len(args) < 4:
+                    print("** value missing **")
+                elif args[2] not in no_change:
+                    obj = obj_dict[class_id]
+                    obj.__dict__[args[2]] = args[3]
+                    obj.save()
 
 
 if __name__ == '__main__':
