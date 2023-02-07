@@ -89,15 +89,6 @@ In the interactive mode, the console will display (hbnb) prompting the user to t
 In the non-interactive mode, the console is run with a command pipped into into its execution - this way the command is run as soon as the shell starts. In this mode no prompt (hbnb) appears, and no further input is expected from the user.
 </p>
 
-</details>
-
-<details><summary> Description of Files Included</summary>
-
-</p>
-
-<h2>Files included:</h2>
-Files and commands used to complete this project.
-</p>
 
 
 ## Files included w/descriptions:
