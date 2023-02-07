@@ -1,9 +1,16 @@
 #!/usr/bin/python3
-import uuid
+import uuid 
+import models
 from datetime import datetime
 
+
+
 class BaseModel:
+    """ Represent a class BaseModel that defines
+    all common attributes/methods for other classes """ 
+    
     def __init__(self, *args, **kwargs):
+        
         self.id = str(uuid.uuid4())
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
@@ -18,10 +25,11 @@ class BaseModel:
                     setattr(self, key, value)
                     
     def __str__(self):
+        """returns string class"""
         return "[{}] ({}) {}".format(
-            type(self).__name__,
-            self.id,
-            self.__dict__
+        type(self).__name__,
+        self.id,
+        self.__dict__
         )
     
     def save(self):
