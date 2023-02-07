@@ -94,6 +94,23 @@ class HBNBCommand(cmd.Cmd):
             else:
                 del (obj_dict["{}.{}".format(arg[0], arg[1])])
                 storage.save()
+           
+        def do_all(self, arg):
+            """ Print all objects or all objects of specified class """
+            yes = 0
+            all_obj = [str(v) for v in storage.all().values()]
+            if not arg:
+                yes = 1
+                print('{}'.format(all_obj))
+            elif arg:
+                arg_list = arg.split()
+            if arg and arg_list[0] in HBNBCommand.__classes:
+                yes = 1
+                all_obj = storage.all()  # all() method from file_storage.py
+                name = arg_list[0]
+                all_obj = [str(v) for k, v in all_obj.items()
+            if name == v.__class__.__name__]
+            print(all_obj)
 
 
 
