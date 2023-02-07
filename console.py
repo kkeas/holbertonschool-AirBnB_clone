@@ -66,6 +66,7 @@ class HBNBCommand(cmd.Cmd):
             storage.save()
 
     def do_show(self, line):
+        """show all"""
         arg = line.split()
         objdict = storage.all() #all method from filestorage 
         if len(arg) == 0:
@@ -77,7 +78,12 @@ class HBNBCommand(cmd.Cmd):
         elif arg[1] not in HBNBCommand.__classes:
             print("** no instance found **")
         else:
-            print(objdict["{}.{}".format(arg[0], arg[1])])
+            obj_search = arg[0] + "." + arg[1]
+            obj_all = storage.all()
+            if obj_search in obj_all:
+                print(str(obj_all[obj_search]))
+            else:
+                print(objdict["{}.{}".format(arg[0], arg[1])])
         
         def do_destroy(self,line):
             """ Destroy instance specified by user; save changes to JSON file """
