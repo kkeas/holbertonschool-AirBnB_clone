@@ -97,13 +97,10 @@ In the non-interactive mode, the console is run with a command pipped into into 
 
 <h2>Files included:</h2>
 Files and commands used to complete this project.
-
 </p>
 
 
-
 ## Files included w/descriptions:
-### [console.py]
 The console contains the entry point of the interpreter, the list of commands
 the interpreter supports are as follows:
 * `EOF` - exits console
@@ -113,11 +110,19 @@ the interpreter supports are as follows:
 * `show` - Prints the string representation of an instance based on the class name and id.
 * `all` - Prints all string representation of all instances based or not on the class name. 
 * `update` - Updates an instance based on the class name and id by adding or updating attribute (save the change into the JSON file). 
-| FILES TO INHERIT FROM BASEMODEL  | DESCRIPTION   | ATTRIBUTES                                                                                                                           |
-|----------------------------------|---------------|--------------------------------------------------------------------------------------------------------------------------------------|
-| [user.py](/models/user.py)       | user class    | email, password, first_name, last_name                                                                                               |
-| [amenity.py](/models/amenity.py) | amenity class | name                                                                                                                                 |
-| [place.py](/models/place.py)     | place class   | city_id, user_id, name, description, number_of_rooms, longitude, latitude, max_guests, number_bathrooms, price_by_night, amenity_ids |
-| [review.py](/models/review.py)   | review class  | place_id, user_id, text                                                                                                              |
-| [state.py](/models/state.py)     | state class   | name                                                                                                                                 |
-| [city.py](/models/city.py)       | city class    | state_id, name                                                                                                                       |
+
+
+## Testing:
+All files, classes and functions can be tested with unit tests.
+
+**Interactive mode:** 
+```
+python3 -m unittest discover tests
+```
+
+**Non-interactive mode** 
+```
+echo "python3 -m unittest discover tests" | bash
+```
+## Contributors
+Katrina Keas & Johanna Avila
