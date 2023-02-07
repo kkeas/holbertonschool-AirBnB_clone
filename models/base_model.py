@@ -5,34 +5,42 @@ from uuid import uuid4
 from datetime import datetime
 import models
 
+import uuid
+import datetime
+import models
+
+
 class BaseModel:
-    """base model"""
+    """class base model that defines attributes"""
     def __init__(self, *args, **kwargs):
-        """type method init"""
-        timeformat = "%Y-%m-%dT%H:%M:%S.%f"
-        if len(kwargs) != 0:
+        self.id = str(uuid.uuid4())
+        self.created_at = self.updated_at = datetime.datetime.now()
+        models.storage.new(self)
+        
+        if kwargs:
             for key, value in kwargs.items():
-                if key == "created_at" or "updated_at":
-                    setattr(self, key, datetime.strptime(value, timeformat))
-                elif key != '__class__':
+                if key != '__class__':
                     setattr(self, key, value)
-        else:           
-            self.id = str(uuid4())
-            self.created_at = datetime.today()
-            self.updated_at = datetime.today()
+                    
+                    if key in ('created_at', 'updated_at'):
+                        setattr(self, key, datetime.datetime.strptime(
+                            value, '%Y-%m-%dT%H:%M:%S.%f'
+                        ))
 
-        def __str__(self):
-            """ Type method __str__ """
-            class_name = self.__class__.__name__
-            return "[{}] ({}) {}".format(class_name, self.id, self.__dict__)
+    def __str__(self):
+        """returns string of an instance"""
+        bname = self.__class__.__name__
+        return f"[{bname}] ({self.id}) {self.__dict__}"
 
-        def save(self):
-            """ Update the attribute update_at with current datetime """
-            self.updated_at = datetime.today
+    def save(self):
+        """c"""
+        self.updated_at = datetime.datetime.now()
+        models.storage.save()
 
-        def to_dict(self):
-            lildict = self.__dict__.copy()
-            lildict["created_at"] = datetime.created_at.isoformat()
-            lildict["updated_at"] = datetime.updated_at.isoformat()
-            lildict["__class__"] = self.__class__.__name__
-            return lildict
+    def to_dict(self):
+        """returns key values"""
+        new_dict = self.__dict__.copy()
+        new_dict["__class__"] = self.__class__.__name__
+        new_dict["created_at"] = self.created_at.isoformat()
+        new_dict["updated_at"] = self.updated_at.isoformat()
+        return new_dict
