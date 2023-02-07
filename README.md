@@ -10,7 +10,7 @@ and how to use interactive mode as well as non-interactive.
 ```
 ![hbnb](https://user-images.githubusercontent.com/91517809/176107896-998e3280-f565-4e09-a801-c609984bfed6.png)
 
-## ⚙️ Installation
+## Installation
 
 > Step 1 - Clone the repo locally using this command
 ```
@@ -89,6 +89,7 @@ In the interactive mode, the console will display (hbnb) prompting the user to t
 In the non-interactive mode, the console is run with a command pipped into into its execution - this way the command is run as soon as the shell starts. In this mode no prompt (hbnb) appears, and no further input is expected from the user.
 </p>
 
+</details>
 
 <details><summary> Description of Files Included</summary>
 
