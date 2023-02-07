@@ -1,40 +1,38 @@
 #!/usr/bin/python3
-import uuid 
-import models
+"""module base model"""
+
+from uuid import uuid4
 from datetime import datetime
-
-
+import models
 
 class BaseModel:
+    """base model"""
     def __init__(self, *args, **kwargs):
-        """ Initialize the BaseModel instance with id, created_at and updated_at """
-        if kwargs:
+        """type method init"""
+        timeformat = "%Y-%m-%dT%H:%M:%S.%f"
+        if len(kwargs) != 0:
             for key, value in kwargs.items():
-                if key != '__class__':
+                if key == "created_at" or "updated_at":
+                    setattr(self, key, datetime.strptime(value, timeformat))
+                elif key != '__class__':
                     setattr(self, key, value)
-            if 'created_at' in kwargs:
-                self.created_at = datetime.datetime.strptime(kwargs['created_at'],
-                                                             '%Y-%m-%dT%H:%M:%S.%f')
-            if 'updated_at' in kwargs:
-                self.updated_at = datetime.datetime.strptime(kwargs['updated_at'],
-                                                             '%Y-%m-%dT%H:%M:%S.%f')
-        else:
-            self.id = str(uuid.uuid4())
-            self.created_at = datetime.datetime.now()
-            self.updated_at = datetime.datetime.now()
+        else:           
+            self.id = str(uuid4())
+            self.created_at = datetime.today()
+            self.updated_at = datetime.today()
 
-    def __str__(self):
-        """ Prints a string representation of BaseModel instance """
-        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
+        def __str__(self):
+            """ Type method __str__ """
+            class_name = self.__class__.__name__
+            return "[{}] ({}) {}".format(class_name, self.id, self.__dict__)
 
-    def save(self):
-        """ Updates the updated_at attribute with the current datetime """
-        self.updated_at = datetime.datetime.now()
+        def save(self):
+            """ Update the attribute update_at with current datetime """
+            self.updated_at = datetime.today
 
-    def to_dict(self):
-        """ Returns a dictionary representation of BaseModel instance """
-        new_dict = self.__dict__.copy()
-        new_dict['__class__'] = self.__class__.__name__
-        new_dict['created_at'] = self.created_at.isoformat()
-        new_dict['updated_at'] = self.updated_at.isoformat()
-        return new_dict
+        def to_dict(self):
+            lildict = self.__dict__.copy()
+            lildict["created_at"] = datetime.created_at.isoformat()
+            lildict["updated_at"] = datetime.updated_at.isoformat()
+            lildict["__class__"] = self.__class__.__name__
+            return lildict
