@@ -1,5 +1,4 @@
 # 0x00. AirBnB clone - The console
-# 0x00. AirBnB clone - The console
 
 Welcome to part 1 of many projects that make up the beginning
 of a clone AirBnB.
