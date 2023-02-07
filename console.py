@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
 """console"""
 import cmd
 import json
@@ -26,64 +25,59 @@ class HBNBCommand(cmd.Cmd):
         }
 
     def do_EOF(self, arg):
-        """exits the console"""
+        """Exits the console"""
         return True
 
     def help_EOF(self):
-        print("syntax: EOF"),
+        print("syntax: EOF")
         print("-- exits console")
 
     def do_quit(self, arg):
-        """exits console"""
+        """Exits the console"""
         return True
 
     def help_quit(self):
-        print("syntax: quit"),
+        print("syntax: quit")
         print("-- terminates the application")
 
     def emptyline(self):
         return False
 
     def do_create(self, arg):
-        """create new instance and save it to the json file"""
+        """Creates a new instance and saves it to the JSON file"""
         if not arg:
             print("** class name missing **")
         elif arg not in HBNBCommand.__classes:
             print("** class doesn't exist **")
         else:
-            classd = {'BaseModel': BaseModel,
-                     'User': User,
-                     'Place': Place,
-                     'State': State,
-                     'City': City,
-                     'Amenity': Amenity,
-                     'Review': Review
-                     }
+            class_dict = {
+                'BaseModel': BaseModel,
+                'User': User,
+                'Place': Place,
+                'State': State,
+                'City': City,
+                'Amenity': Amenity,
+                'Review': Review
+            }
 
-            newobj = classd[arg]()
-            newobj.save()
-            print('{}', format(newobj.id))
+            new_obj = class_dict[arg]()
+            new_obj.save()
+            print('{}'.format(new_obj.id))
             storage.save()
 
     def do_show(self, line):
-        """show all"""
         arg = line.split()
-        objdict = storage.all() #all method from filestorage 
+        obj_dict = storage.all() # all() method from filestorage 
         if len(arg) == 0:
             print("** class name missing **")
-        if arg[0] not in HBNBCommand.__classes:
+        elif arg[0] not in HBNBCommand.__classes:
             print("** class doesn't exist **")
         elif len(arg) == 1:
             print("** instance id missing **")
-        elif arg[1] not in HBNBCommand.__classes:
+        elif "{}.{}".format(arg[0], arg[1]) not in obj_dict:
             print("** no instance found **")
         else:
-            obj_search = arg[0] + "." + arg[1]
-            obj_all = storage.all()
-            if obj_search in obj_all:
-                print(str(obj_all[obj_search]))
-            else:
-                print(objdict["{}.{}".format(arg[0], arg[1])])
+            print(objdict["{}.{}".format(arg[0], arg[1])])
         
         def do_destroy(self,line):
             """ Destroy instance specified by user; save changes to JSON file """
@@ -145,6 +139,3 @@ class HBNBCommand(cmd.Cmd):
                     obj.__dict__[args[2]] = args[3]
                     obj.save()
 
-
-if __name__ == '__main__':
-    HBNBCommand().cmdloop()
