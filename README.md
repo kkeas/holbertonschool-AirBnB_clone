@@ -7,13 +7,22 @@ This project is hosted by Holberton School.
 Here we will do a small breakdown on how to open our console 
 and how to use interactive mode as well as non-interactive.
 ```
-![hbnb](https://user-images.githubusercontent.com/91517809/176107896-998e3280-f565-4e09-a801-c609984bfed6.png)'/n'
+![hbnb](https://user-images.githubusercontent.com/91517809/176107896-998e3280-f565-4e09-a801-c609984bfed6.png)
 
 
 # TABLE OF CONTENTS
 <p>
+</details>
 
-<h2>Description</h2>
+<details><summary>Description of Installation </summary>
+
+<p>
+
+<h2>How to Install:</h2>
+
+You will be using Ubuntu 20.04 with python3, you can work locally or through a sandbox.
+
+<h2>Objective</h2>
 
 The AirBnB clone project's goal is to deploy on your server a simple copy of the AirBnB website.
 You won’t implement all the features, only some of them to cover all fundamental concepts of the higher level programming track.
