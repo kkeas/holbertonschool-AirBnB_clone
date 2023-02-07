@@ -13,7 +13,7 @@ and how to use interactive mode as well as non-interactive.
 
 > Step 1 - Clone the repo locally using this command
 ```
-gh repo clone chiaracaprasi/holbertonschool-AirBnB_clone
+gh repo clone kkeas/holbertonschool-AirBnB_clone
 ```
 > Step 2 - Navigate to the folder
 ```
