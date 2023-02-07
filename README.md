@@ -23,7 +23,7 @@ Beginning with these fundamental steps:
 
 </details>
 
-<details><summary> The console </summary>
+<details><summary>Description of The console </summary>
 
 <p>
 
@@ -35,6 +35,30 @@ This abstraction will also allow you to change the type of storage easily withou
 
 The console will be a tool to validate this storage engine
 
+# How to Install:
+
+## Installation
+
+> Step 1 - Clone the repo locally using following commands
+```
+git repo clone kkeas/holbertonschool-AirBnB_clone
+```
+> Step 2 - CD to the folder
+```
+cd holbertonschool-AirBnB_clone
+```
+> Step 3 - Run the console shell in interactive mode:
+```
+./console.py
+```
+> Step 4 - Type a command e.g.
+```
+(hbnb) help
+```
+> Step 5 - Exit the shell
+```
+(hbnb) quit
+```
 </p>
 
 </details>
@@ -64,5 +88,46 @@ In the non-interactive mode, the console is run with a command pipped into into 
 
 <p>
 
+<h2>Installation:</h2>
+You can use a sandbox or your local env, you will be cloning from github.
+This project was completed through Ubuntu 20.04 in python3.
+
+</p>
+
+</details>
+
+<details><summary> Description of installation</summary>
+
+<p>
+
+<h2>Files included:</h2>
+Files and commands used to complete this project.
+
+</p>
+
+</details>
+
+<details><summary> Description of Files included</summary>
+
+<p>
 
 
+## Files included w/descriptions:
+### [console.py]
+The console contains the entry point of the interpreter, the list of commands
+the interpreter supports are as follows:
+* `EOF` - exits console
+* `quit` - exits console
+* `create` - Creates a new instance of`BaseModel`, saves it (to the JSON file) and prints the id
+* `destroy` - Deletes an instance based on the class name and id (save the change into the JSON file). 
+* `show` - Prints the string representation of an instance based on the class name and id.
+* `all` - Prints all string representation of all instances based or not on the class name. 
+* `update` - Updates an instance based on the class name and id by adding or updating attribute (save the change into the JSON file). 
+| FILES TO INHERIT FROM BASEMODEL  | DESCRIPTION   | ATTRIBUTES                                                                                                                           |
+|----------------------------------|---------------|--------------------------------------------------------------------------------------------------------------------------------------|
+| [user.py](/models/user.py)       | user class    | email, password, first_name, last_name                                                                                               |
+| [amenity.py](/models/amenity.py) | amenity class | name                                                                                                                                 |
+| [place.py](/models/place.py)     | place class   | city_id, user_id, name, description, number_of_rooms, longitude, latitude, max_guests, number_bathrooms, price_by_night, amenity_ids |
+| [review.py](/models/review.py)   | review class  | place_id, user_id, text                                                                                                              |
+| [state.py](/models/state.py)     | state class   | name                                                                                                                                 |
+| [city.py](/models/city.py)       | city class    | state_id, name                                                                                                                       |
