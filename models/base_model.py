@@ -32,6 +32,13 @@ class BaseModel:
         self.updated_at = datetime.now()
         models.storage.save()
 
+    def test_dic(self):
+        bm1 = BaseModel()
+        richard = bm1.to_dict()
+        self.assertIsInstance(test_dic, dict)
+        self.assertIsInstance(test_dic["updated_at"], str)
+        self.assertIsInstance(test_dic["created_at"], str)
+
     def to_dict(self):
         """returns key values"""
         new_dict = self.__dict__.copy()
