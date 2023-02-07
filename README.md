@@ -87,6 +87,7 @@ In the interactive mode, the console will display (hbnb) prompting the user to t
 
 <h2>Non-interactive Mode</h2>
 In the non-interactive mode, the console is run with a command pipped into into its execution - this way the command is run as soon as the shell starts. In this mode no prompt (hbnb) appears, and no further input is expected from the user.
+</details>
 </p>
 
 
