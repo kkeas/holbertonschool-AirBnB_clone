@@ -3,10 +3,7 @@
 
 from uuid import uuid4
 from datetime import datetime
-import models
-
 import uuid
-import datetime
 import models
 
 
@@ -14,18 +11,16 @@ class BaseModel:
     """class base model that defines attributes"""
     def __init__(self, *args, **kwargs):
         self.id = str(uuid.uuid4())
-        self.created_at = self.updated_at = datetime.datetime.now()
+        self.created_at = self.updated_at = datetime.now()
         models.storage.new(self)
         
         if kwargs:
             for key, value in kwargs.items():
                 if key != '__class__':
                     setattr(self, key, value)
-                    
+                    f = '%Y-%m-%dT%H:%M:%S.%f'
                     if key in ('created_at', 'updated_at'):
-                        setattr(self, key, datetime.datetime.strptime(
-                            value, '%Y-%m-%dT%H:%M:%S.%f'
-                        ))
+                        setattr(self, key, datetime.strptime(value, f))
 
     def __str__(self):
         """returns string of an instance"""
@@ -34,8 +29,15 @@ class BaseModel:
 
     def save(self):
         """c"""
-        self.updated_at = datetime.datetime.now()
+        self.updated_at = datetime.now()
         models.storage.save()
+
+    def test_dic(self):
+        bm1 = BaseModel()
+        richard = bm1.to_dict()
+        self.assertIsInstance(test_dic, dict)
+        self.assertIsInstance(test_dic["updated_at"], str)
+        self.assertIsInstance(test_dic["created_at"], str)
 
     def to_dict(self):
         """returns key values"""
