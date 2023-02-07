@@ -93,7 +93,7 @@ In the non-interactive mode, the console is run with a command pipped into into 
 
 <details><summary> Description of Files Included</summary>
 
-<p>
+</p>
 
 <h2>Files included:</h2>
 Files and commands used to complete this project.
