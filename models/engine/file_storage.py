@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 import json
+import os.path
 from models.amenity import Amenity
 from models.base_model import BaseModel
 from models.city import City
@@ -32,9 +33,19 @@ class FileStorage:
             json.dump(FileStorage.__objects, f)
 
     def reload(self):
-        """deserializes the JSON file to __obj"""
-        try:
-            with open(FileStorage.__file_path, 'r', encoding='utf-8') as f:
-                FileStorage.__objects = json.load(f)
-        except FileNotFoundError:
-            pass
+        """ Deserialize __objects from JSON file """
+        dct = {'BaseModel': BaseModel,
+            'User': User,
+            'Place': Place,
+            'State': State,
+            'City': City,
+            'Amenity': Amenity,
+            'Review': Review
+            }
+
+        if os.path.exists(FileStorage.__file_path):
+            with open(FileStorage.__file_path) as fd:
+                obj_dict = json.load(fd)
+                for key, value in obj_dict.items():
+                    self.new(dct[value['__class__']](**value))
+            return
