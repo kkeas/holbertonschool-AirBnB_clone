@@ -77,7 +77,7 @@ class HBNBCommand(cmd.Cmd):
         elif "{}.{}".format(arg[0], arg[1]) not in obj_dict:
             print("** no instance found **")
         else:
-            print(objdict["{}.{}".format(arg[0], arg[1])])
+            print(obj_dict["{}.{}".format(arg[0], arg[1])])
         
         def do_destroy(self,line):
             """ Destroy instance specified by user; save changes to JSON file """
