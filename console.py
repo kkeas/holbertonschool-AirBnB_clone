@@ -109,8 +109,8 @@ class HBNBCommand(cmd.Cmd):
                 yes = 1
                 all_obj = storage.all()  # all() method from file_storage.py
                 name = arg_list[0]
-                all_obj = [str(v) for k, v in all_obj.items()
-            if name == v.__class__.__name__]
+                all_obj = ([str(v) for k, v in all_obj.items()
+                            if name == v.__class__.__name__])
                 print(all_obj)
 
             if yes == 0:
