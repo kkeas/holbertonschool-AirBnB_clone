@@ -13,6 +13,7 @@ from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
+    """console"""
     prompt = '(hbnb) '
     __classes = {
         'BaseModel',
@@ -138,5 +139,6 @@ class HBNBCommand(cmd.Cmd):
                     obj = obj_dict[class_id]
                     obj.__dict__[args[2]] = args[3]
                     obj.save()
-    
-   
+
+if __name__ == '__main__':
+    HBNBCommand().cmdloop()
