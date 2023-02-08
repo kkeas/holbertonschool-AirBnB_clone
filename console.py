@@ -29,21 +29,13 @@ class HBNBCommand(cmd.Cmd):
         """Exits the console"""
         return True
 
-    def help_EOF(self):
-        print("syntax: EOF")
-        print("-- exits console")
-
     def do_quit(self, arg):
         """Exits the console"""
         return True
 
-    def help_quit(self):
-        print("syntax: quit")
-        print("-- terminates the application")
-
     def emptyline(self):
         """comment"""
-        return False
+        pass
 
     def do_create(self, arg):
         """Creates a new instance and saves it to the JSON file"""
