@@ -34,10 +34,10 @@ class BaseModel:
 
     def test_dic(self):
         bm1 = BaseModel()
-        richard = bm1.to_dict()
-        self.assertIsInstance(test_dic, dict)
-        self.assertIsInstance(test_dic["updated_at"], str)
-        self.assertIsInstance(test_dic["created_at"], str)
+        dicc = bm1.to_dict()
+        self.assertIsInstance(dicc, dict)
+        self.assertIsInstance(dicc["updated_at"], str)
+        self.assertIsInstance(dicc["created_at"], str)
 
     def to_dict(self):
         """returns key values"""
