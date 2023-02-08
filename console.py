@@ -42,6 +42,7 @@ class HBNBCommand(cmd.Cmd):
         print("-- terminates the application")
 
     def emptyline(self):
+        """comment"""
         return False
 
     def do_create(self, arg):
@@ -67,6 +68,7 @@ class HBNBCommand(cmd.Cmd):
             storage.save()
 
     def do_show(self, line):
+        """comment"""
         arg = line.split()
         obj_dict = storage.all()
         if len(arg) == 0:
