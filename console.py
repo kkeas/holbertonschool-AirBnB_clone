@@ -68,7 +68,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, line):
         arg = line.split()
-        obj_dict = storage.all() # all() method from filestorage 
+        obj_dict = storage.all()
         if len(arg) == 0:
             print("** class name missing **")
         elif arg[0] not in HBNBCommand.__classes:
@@ -79,9 +79,9 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
         else:
             print(obj_dict["{}.{}".format(arg[0], arg[1])])
-        
-        def do_destroy(self,line):
-            """ Destroy instance specified by user; save changes to JSON file """
+
+        def do_destroy(self, line):
+            """Destroy instance specified by user; save changes to JSON file"""
             arg = line.split()
             obj_dict = storage.all()  # all() method from file_storage.py
             if len(arg) == 0:
@@ -95,7 +95,7 @@ class HBNBCommand(cmd.Cmd):
             else:
                 del (obj_dict["{}.{}".format(arg[0], arg[1])])
                 storage.save()
-           
+
         def do_all(self, arg):
             """ Print all objects or all objects of specified class """
             yes = 0
@@ -111,8 +111,8 @@ class HBNBCommand(cmd.Cmd):
                 name = arg_list[0]
                 all_obj = [str(v) for k, v in all_obj.items()
             if name == v.__class__.__name__]
-            print(all_obj)
-            
+                print(all_obj)
+
             if yes == 0:
                 print("** class doesn't exist **")
 
@@ -139,6 +139,7 @@ class HBNBCommand(cmd.Cmd):
                     obj = obj_dict[class_id]
                     obj.__dict__[args[2]] = args[3]
                     obj.save()
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
