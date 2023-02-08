@@ -13,6 +13,7 @@ from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
+    """console"""
     prompt = '(hbnb) '
     __classes = {
         'BaseModel',
@@ -77,7 +78,7 @@ class HBNBCommand(cmd.Cmd):
         elif "{}.{}".format(arg[0], arg[1]) not in obj_dict:
             print("** no instance found **")
         else:
-            print(objdict["{}.{}".format(arg[0], arg[1])])
+            print(obj_dict["{}.{}".format(arg[0], arg[1])])
         
         def do_destroy(self,line):
             """ Destroy instance specified by user; save changes to JSON file """
@@ -139,3 +140,5 @@ class HBNBCommand(cmd.Cmd):
                     obj.__dict__[args[2]] = args[3]
                     obj.save()
 
+if __name__ == '__main__':
+    HBNBCommand().cmdloop()
