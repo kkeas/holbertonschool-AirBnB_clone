@@ -1,0 +1,9 @@
+h1 {
+    background-color: #FF0000;
+    height: 70px;
+    width: 100%;
+    margin: none;
+    padding: none;
+    position: absolute;
+    top: 0;
+}
